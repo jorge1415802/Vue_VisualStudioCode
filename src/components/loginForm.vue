@@ -13,11 +13,11 @@
                   <form @submit="ingresar">
                     <div class="form-group">
                       <label for="Email">Email address</label>
-                      <input v-model="correo" name="ExampleEmail1" id="Email" type="email" class="form-control" placeholder="Correo" required>  
+                      <input v-model="correo" name="Email1" id="Email" type="email" class="form-control" placeholder="Correo" required>  
                     </div>
                     <div class="form-group">
                       <label for="Password1">Password</label>
-                      <input  v-model="clave" name="ExamplePassword1" id="Password1" type="password" class="form-control" placeholder="Password" required>
+                      <input  v-model="clave" name="Password1" id="Password1" type="password" class="form-control" placeholder="Password" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Ingresar</button>
                   </form>
@@ -28,25 +28,32 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid my-3 card col-4">
+    <div class="container-fluid my-3">
       <br>
-      <div class="card-header"><h3>Registrarse en el Sistema</h3></div>
-      <div class="card-body">
-        <form>
-          <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="text" v-model="email" name="email" id="email" class="form-control" placeholder="Correo">
+      <div class="row">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-4 mx-auto">
+          <div class="card">
+            <div class="card">
+              <div class="card-header"><h3>Registrarse en el Sistema</h3></div>
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="email">Email address</label>
+                      <input type="text" v-model="email" name="email" id="email" class="form-control" placeholder="Correo">
+                    </div>
+                    <div class="form-group">
+                      <label for="pass">Password</label>
+                      <input type="password" v-model="pass" name="pass" id="pass" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" v-on:click="registrar" class="btn btn-primary">Registrar</button>  
+                    </div>
+                  </form>
+                </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="pass">Password</label>
-            <input type="password" v-model="pass" name="pass" id="pass" class="form-control" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <button type="submit" v-on:click="registrar" class="btn btn-primary">Registrar</button>  
-          </div>
-        </form>
+        </div>
       </div>
-      
     </div>
   </div>
 </template>
