@@ -1,4 +1,5 @@
 <template>
+  <div>
     <div id="login">
       <div class="container-fluid my-3">
         <div class="row">
@@ -11,12 +12,12 @@
                 <div class="card-body">
                   <form @submit="ingresar">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input v-model="correo" type="email" class="form-control " required>  
+                      <label for="Email">Email address</label>
+                      <input v-model="correo" name="ExampleEmail1" id="Email" type="email" class="form-control" placeholder="Correo" required>  
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input  v-model="clave"  type="password" class="form-control" required>
+                      <label for="Password1">Password</label>
+                      <input  v-model="clave" name="ExamplePassword1" id="Password1" type="password" class="form-control" placeholder="Password" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Ingresar</button>
                   </form>
@@ -27,6 +28,27 @@
         </div>
       </div>
     </div>
+    <div class="container-fluid my-3 card col-4">
+      <br>
+      <div class="card-header"><h3>Registrarse en el Sistema</h3></div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="text" v-model="email" name="email" id="email" class="form-control" placeholder="Correo">
+          </div>
+          <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" v-model="pass" name="pass" id="pass" class="form-control" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <button type="submit" v-on:click="registrar" class="btn btn-primary">Registrar</button>  
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
 </template>
 
 <script>
@@ -35,7 +57,9 @@
       data: function() {
          return {
             correo:'',
-            clave:''
+            clave:'',
+            email:'',
+            pass:''
          }
       },
       props: ["firebase"],
@@ -51,7 +75,24 @@
                   let errorCode = error.code;
                   let errorMessage = error.message;
                   alert("Correo invalido ",errorCode,errorMessage);
-               })
+               });
+         },
+         registrar:function() {
+            if(this.email.length === 0 || this.pass.length === 0)
+              alert("El correo o la contraseña no pueden ser vacios");
+            else{
+              
+              this.firebase.auth().createUserWithEmailAndPassword(this.email,this.pass)
+                .then((res)=>{
+                  this.firebase.auth().currentUser.sendEmailVerification();
+                  console.log(res);
+                })
+                .caller((error)=>{
+                  alert("Algo salio mal, vuelve a intentarlo",error);
+                })
+              }  
+            
+        
          }
       }
    }

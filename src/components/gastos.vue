@@ -45,9 +45,9 @@
             <hr>
                <div class="btn-group" role="group">
                   <div v-for="Filtro in Filtros" v-bind:key="Filtro">
-                    <button type="button" class="btn btn-secondary" v-on:click="Filtrar(Filtro)" >{{Filtro}}</button>
+                    <button type="button" class="btn btn-outline-success" v-on:click="Filtrar(Filtro)" >{{Filtro}}</button>
                   </div>
-                  <button type="button" class="btn btn-warning" v-on:click="SinFiltro()" >x</button>
+                  <button type="button" class="btn btn-outline-danger mx-2" v-on:click="SinFiltro()" >x</button>
                </div>
             <hr>
             </div>
@@ -71,8 +71,8 @@
                               <td>{{item.Monto}}</td>
                               <td>{{item.Tipo}}</td>
                               <td> 
-                                 <button title="Editar" type="button"  v-on:click="Consultar(item.id)" class="btn btn-warning btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button> 
-                                 <button title="Eliminar" type="button"  v-on:click="Eliminar(item)" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button> 
+                                 <button title="Editar" type="button"  v-on:click="Consultar(item.id)" class="btn btn-outline-warning btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></button> 
+                                 <button title="Eliminar" type="button"  v-on:click="Eliminar(item)" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button> 
                               </td>                          
                            </tr>                           
                         </tbody>

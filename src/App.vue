@@ -16,6 +16,7 @@
 
 import firebase from 'firebase';
 import 'firebase/firestore';
+import 'firebase/auth';
 import loginForm from './components/loginForm.vue';
 import gastos from './components/gastos.vue';
 
