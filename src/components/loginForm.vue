@@ -84,20 +84,24 @@
                   alert("Correo invalido ",errorCode,errorMessage);
                });
          },
-         registrar:function() {
+         registrar:function(e) {
+           e.preventDefault();
             if(this.email.length === 0 || this.pass.length === 0)
               alert("El correo o la contraseña no pueden ser vacios");
             else{
-              
               this.firebase.auth().createUserWithEmailAndPassword(this.email,this.pass)
                 .then((res)=>{
                   this.firebase.auth().currentUser.sendEmailVerification();
+                  alert("Se envio un correo a la direccion ingresada por favor revisala");
                   console.log(res);
+                  location.reload();  
+
                 })
                 .caller((error)=>{
                   alert("Algo salio mal, vuelve a intentarlo",error);
+                  location.reload();
                 })
-              }  
+              }
             
         
          }

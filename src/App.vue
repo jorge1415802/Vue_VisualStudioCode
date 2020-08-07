@@ -50,8 +50,8 @@ export default {
     };
     firebase.initializeApp(config);
     this.db = firebase.firestore();
-    const settings = {timestampsInSnapshots: true};
-    this.db.settings(settings);
+    //const settings = {timestampsInSnapshots: true};
+    //this.db.settings(settings);
     this.firebase=firebase;
   },
   methods: {
